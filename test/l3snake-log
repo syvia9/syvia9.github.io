@@ -1,0 +1,52 @@
+# port 8 ping device ethernet 0
+## route 
+***sudo config int ip add Ethernet1 103.0.0.11/24***  
+sudo config int ip add Ethernet3 103.0.0.33/24  
+sudo config route add prefix vrf Vrf100 20.0.0.0/24 nexthop vrf Vrf100 103.0.0.33  
+sudo config route add prefix vrf Vrf203 ***10.0.0.0/24*** nexthop vrf Vrf203 ***103.0.0.11***  
+## IXIA
+IxIA config:  
+port 7 <--> device Ethernet0  
+port 8 <--> device Ethernet2  
+port7: 10.0.0.100/24  
+port8: 20.0.0.100/24  
+
+
+## log
+port8 ping 10.0.0.10:
+
+
+4 packets captured  
+4 packets received by filter  
+0 packets dropped by kernel  
+cisco@sonic7006:~$ sudo tcpdump -i ***Ethernet1*** -xx 
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode  
+listening on ***Ethernet1***, link-type EN10MB (Ethernet), capture size 262144 bytes  
+02:45:16.934480 IP 20.0.0.100 > 10.0.0.10: ICMP echo request, id 0, seq 25, length 8  
+        0x0000:  b0c5 3c06 8600 b0c5 3c06 8600 0800 4500  
+        0x0010:  001c eec9 4000 3f01 2eaa 1400 0064 0a00  
+        0x0020:  000a 0800 f7e6 0000 0019 0000 0000 0000  
+        0x0030:  0000 0000 0000 0000 0000 0000  
+
+02:45:16.934541 IP 10.0.0.10 > 20.0.0.100: ICMP echo reply, id 0, seq 25, length 8  
+        0x0000:  b0c5 3c06 8600 b0c5 3c06 8600 0800 4500  
+        0x0010:  001c 499f 0000 4001 12d5 0a00 000a 1400  
+        0x0020:  0064 0000 ffe6 0000 0019  
+
+02:45:18.062536 IP 20.0.0.100 > 10.0.0.10: ICMP echo request, id 0, seq 26, length 8  
+        0x0000:  b0c5 3c06 8600 b0c5 3c06 8600 0800 4500  
+        0x0010:  001c f116 4000 3f01 2c5d 1400 0064 0a00  
+        0x0020:  000a 0800 f7e5 0000 001a 0000 0000 0000 
+        0x0030:  0000 0000 0000 0000 0000 0000 
+
+02:45:18.062561 IP 10.0.0.10 > 20.0.0.100: ICMP echo reply, id 0, seq 26, length 8  
+        0x0000:  b0c5 3c06 8600 b0c5 3c06 8600 0800 4500  
+        0x0010:  001c 4a82 0000 4001 11f2 0a00 000a 1400  
+        0x0020:  0064 0000 ffe5 0000 001a  
+
+02:45:20.582276 IP 20.0.0.100 > 10.0.0.10: ICMP echo request, id 0, seq 27, length 8  
+        0x0000:  b0c5 3c06 8600 b0c5 3c06 8600 0800 4500  
+        0x0010:  001c f566 4000 3f01 280d 1400 0064 0a00  
+        0x0020:  000a 0800 f7e4 0000 001b 0000 0000 0000  
+        0x0030:  0000 0000 0000 0000 0000 0000  
+02:45:20.582363 IP 10.0.0.10 > 20.0.0.100: ICMP echo reply, id 0, seq 27, length 8  
