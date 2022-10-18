@@ -1,0 +1,1 @@
+data 抓不到IXIA自身发的 arp包，只能抓到对端发过来的，要抓到自身的ARP包，需要用control选项
