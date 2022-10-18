@@ -1,0 +1,39 @@
+show ip BGP 里是router里的BGP route,   
+show ip route是router里其他方式得到的route  
+router会把show ip route是router注入到show ip route BGP表里  
+然后BGP协议会把show ip route BGP 的route表传到neighbor router， neighbor router收到后，  
+会把这些route注入到show ip route表里  
+
+show ip bgp 100.1.1.0/24
+查看指定BGP路由的属性
+
+
+network IPprefix mask 
+逐条引入route
+redistribute xxprotocol protocalID
+:
+引入指定协议的所有route
+
+redistribute xxprotocol protocalID route-map filter
+:
+引入指定协议的某些route
+
+show ip route bgp 中一条路由可能有好几条，不同path, 只有一条前面标识了'>', 是best choice,只有这条才会被同步到show ip route表
+
+
+show ip route bgp 的条目中，如果有个?,则表示该条路由是redistribute分发的
+
+IBGP的route nexthop属性传递给IBGP的其他成员时，默认不修改nexthop, 除非用命令修改
+neighbor ipprefix 255.255.255.0 nexthop self
+
+R2#show ip route bgp
+R2#100.1.1.0/24    35.1.1.1     0   100     0  500 400 100 i
+
+R3#router bgp 230
+R3#neighbor 2.2.2.2 next-hop-self  //import route到BGP的时候把next hop修改成想用的
+R2#show ip bgp
+R2#100.1.1.0/24    3.3.3.3     0   100     0  500 400 100 i
+
+
+show ip route bgp 里的bgp route table 不直接影响报文转发
+show ip route 里的route才会影响报文转发
