@@ -74,11 +74,11 @@ INFO  ============================================================
 (Pdb) import npu_scripts  
 (Pdb) from npu_scripts import *  
 (Pdb) dev_h  
-*** NameError: name 'dev_h' is not defined
-(Pdb) set_dev(self.device)
-ERROR: 'hld_debug_utils.lpm_db(la_dev)' FAILED
-ERROR: 'hld_debug_utils.cem_db(la_dev)' FAILED
-ERROR: 'hld_debug_utils.arc_counters(la_dev)' FAILED
+*** NameError: name 'dev_h' is not defined  
+(Pdb) set_dev(self.device)  
+ERROR: 'hld_debug_utils.lpm_db(la_dev)' FAILED  
+ERROR: 'hld_debug_utils.cem_db(la_dev)' FAILED  
+ERROR: 'hld_debug_utils.arc_counters(la_dev)' FAILED  
 (Pdb) dev_h  
 *** NameError: name 'dev_h' is not defined  
 (Pdb) npu_sc  
