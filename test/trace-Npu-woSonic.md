@@ -60,44 +60,44 @@ test_destroy_route (__main__.test_ipv4_l3_ac_routing) ... -I-TABLES-1- LPM rebal
 ## 7.import validation file:  
 
 (Pdb) import sys  
-(Pdb) import os  
-(Pdb) sys.LEABA_SDK_PATH = os.getenv('LEABA_SDK_PATH', '')
-(Pdb) from leaba_val import *
+(Pdb) import os    
+(Pdb) sys.LEABA_SDK_PATH = os.getenv('LEABA_SDK_PATH', '')  
+(Pdb) from leaba_val import *  
 INFO  ============================================================
 INFO  ============================================================
 INFO  ================= GIBRALTAR VALIDATION LOG =================
 INFO  ==================based on 1.54.0.ph2ea4.3==================
 INFO  ============================================================
-INFO  ============================================================
+INFO  ============================================================  
 
-(Pdb)
-(Pdb) import npu_scripts
-(Pdb) from npu_scripts import *
-(Pdb) dev_h
+(Pdb)  
+(Pdb) import npu_scripts  
+(Pdb) from npu_scripts import *  
+(Pdb) dev_h  
 *** NameError: name 'dev_h' is not defined
 (Pdb) set_dev(self.device)
 ERROR: 'hld_debug_utils.lpm_db(la_dev)' FAILED
 ERROR: 'hld_debug_utils.cem_db(la_dev)' FAILED
 ERROR: 'hld_debug_utils.arc_counters(la_dev)' FAILED
-(Pdb) dev_h
-*** NameError: name 'dev_h' is not defined
-(Pdb) npu_sc
-*** NameError: name 'npu_sc' is not defined
-#### if above errors erupt, the possible reason is the leaba_val.py is not modified, and init() in the leaba_val is not completed.  
-#### after revising leaba_val.py, do "from leaba_val import * " again, the result would be like below:  
-
-(Pdb) from leaba_val import *  
-(Pdb)  
 (Pdb) dev_h  
+*** NameError: name 'dev_h' is not defined  
+(Pdb) npu_sc  
+*** NameError: name 'npu_sc' is not defined  
+#### if above errors erupt, the possible reason is the leaba_val.py is not modified, and init() in the leaba_val is not completed.    
+#### after revising leaba_val.py, do "from leaba_val import * " again, the result would be like below:   
+  
+(Pdb) from leaba_val import *   
+(Pdb)   
+(Pdb) dev_h   
 <leaba_val.device_handlers_class object at 0x7f7ccf6a0908>  
 (Pdb) set_dev(self.device)  
 ERROR: 'hld_debug_utils.lpm_db(la_dev)' FAILED  
 ERROR: 'hld_debug_utils.cem_db(la_dev)' FAILED  
 ERROR: 'hld_debug_utils.arc_counters(la_dev)' FAILED  
-(Pdb) npu_sc  
-<npu_scripts.npu_scripts object at 0x7f7ccf6a0a58>  
+(Pdb) npu_sc   
+<npu_scripts.npu_scripts object at 0x7f7ccf6a0a58>   
 
-It seems npu_sc has been created correctly
+It seems npu_sc has been created correctly  
 
 ## debug with NPE
 (Pdb) slice = 1
@@ -107,31 +107,31 @@ It seems npu_sc has been created correctly
 Slice[1].Stage['termination'].NPE[0] -> Enable Stop macro feature
 (Pdb) npu_sc.npe_stop_and_step_macro(enable=True, step=False, slice=slice, stage=stage, npe_index=0, print_note=True)
 1
-(Pdb) npu_sc.rxpp_term_last_npe_macros(1,0)
+(Pdb) npu_sc.rxpp_term_last_npe_macros(1,0)  
 #### NOTES: 1) Max stack depth is 4. Head of the macros stack is entry=0. 2) This register is cleared once read. Since last read, 0 valid macros were performed.
-  NPE-macros-stack is empty/cleared
-(Pdb) npu_sc.rxpp_term_last_npe_macros(2,0)
+  NPE-macros-stack is empty/cleared  
+(Pdb) npu_sc.rxpp_term_last_npe_macros(2,0)  
 #### NOTES: 1) Max stack depth is 4. Head of the macros stack is entry=0. 2) This register is cleared once read. Since last read, 0 valid macros were performed.
-  NPE-macros-stack is empty/cleared
-(Pdb) npu_sc.rxpp_term_last_npe_macros(3,0)
+  NPE-macros-stack is empty/cleared  
+(Pdb) npu_sc.rxpp_term_last_npe_macros(3,0)  
 #### NOTES: 1) Max stack depth is 4. Head of the macros stack is entry=0. 2) This register is cleared once read. Since last read, 0 valid macros were performed.
-  NPE-macros-stack is empty/cleared
-(Pdb) npu_sc.rxpp_term_last_npe_macros(4,0)
+  NPE-macros-stack is empty/cleared  
+(Pdb) npu_sc.rxpp_term_last_npe_macros(4,0)   
 #### NOTES: 1) Max stack depth is 4. Head of the macros stack is entry=0. 2) This register is cleared once read. Since last read, 0 valid macros were performed.
-  NPE-macros-stack is empty/cleared
-(Pdb) npu_sc.print_parsed_npe_key("termination", 1, 0, "a")
+  NPE-macros-stack is empty/cleared  
+(Pdb) npu_sc.print_parsed_npe_key("termination", 1, 0, "a")  
 Key type: npl_svl_destination_pack_table_key_option_tm_header_type_unicast_flb_t, Value: 0xec925
   const1_4b0_exact_0x0: 0x9
   const2_DESTINATION_DSP_PREFIX_exact_0xb: 0x1d
   device_svl_packet_app_soft_npuh_svl_uc_data_dsp_10_8_: 0x1
-  device_svl_packet_app_soft_npuh_svl_uc_data_dsp_7_0_: 0x25
-(Pdb)
+  device_svl_packet_app_soft_npuh_svl_uc_data_dsp_7_0_: 0x25  
+(Pdb)  
 Key type: npl_svl_destination_pack_table_key_option_tm_header_type_unicast_flb_t, Value: 0xec925
   const1_4b0_exact_0x0: 0x9
   const2_DESTINATION_DSP_PREFIX_exact_0xb: 0x1d
   device_svl_packet_app_soft_npuh_svl_uc_data_dsp_10_8_: 0x1
-  device_svl_packet_app_soft_npuh_svl_uc_data_dsp_7_0_: 0x25
-(Pdb) npu_sc.get_npe_lookups_and_results(stage="termination", slice=1, npe_index=0, print_note=True)
+  device_svl_packet_app_soft_npuh_svl_uc_data_dsp_7_0_: 0x25  
+(Pdb) npu_sc.get_npe_lookups_and_results(stage="termination", slice=1, npe_index=0, print_note=True)  
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Key Bucket |                   Key Type                    | Key Value | Result Bucket |                  Result Type                  | Result Value |
 |=======================================================================================================================================================|
@@ -146,13 +146,13 @@ Key type: npl_svl_destination_pack_table_key_option_tm_header_type_unicast_flb_t
 
 
 
-For elaboration of keys/results:
-     npu_sc.print_parsed_npe_key(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)
-     npu_sc.print_parsed_npe_result(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)
-Examples:
-     npu_sc.print_parsed_npe_key("termination", 1, 0, "a")
-     npu_sc.print_parsed_npe_result("termination", 1, 0, "a")
-(Pdb)
+For elaboration of keys/results:  
+     npu_sc.print_parsed_npe_key(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)  
+     npu_sc.print_parsed_npe_result(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)  
+Examples:  
+     npu_sc.print_parsed_npe_key("termination", 1, 0, "a")  
+     npu_sc.print_parsed_npe_result("termination", 1, 0, "a")  
+(Pdb)  
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Key Bucket |                   Key Type                    | Key Value | Result Bucket |                  Result Type                  | Result Value |
 |=======================================================================================================================================================|
@@ -167,19 +167,12 @@ Examples:
 
 
 
-For elaboration of keys/results:
-     npu_sc.print_parsed_npe_key(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)
-     npu_sc.print_parsed_npe_result(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)
-Examples:
-     npu_sc.print_parsed_npe_key("termination", 1, 0, "a")
-     npu_sc.print_parsed_npe_result("termination", 1, 0, "a")
-
-
-
-
-
-
-
+For elaboration of keys/results:  
+     npu_sc.print_parsed_npe_key(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)  
+     npu_sc.print_parsed_npe_result(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)  
+Examples:  
+     npu_sc.print_parsed_npe_key("termination", 1, 0, "a")  
+     npu_sc.print_parsed_npe_result("termination", 1, 0, "a")  
 
 
 dev_h
