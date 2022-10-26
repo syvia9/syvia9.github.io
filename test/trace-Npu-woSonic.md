@@ -20,6 +20,18 @@ sed -i 's/import debug_utils as hld_debug_utils/import leaba\.debug_tools\.debug
         pdb.set_trace()
 
 ##  5.run the sdk test:
+    validation import command:
+    import sys  
+    import os  
+    sys.LEABA_SDK_PATH = os.getenv('LEABA_SDK_PATH', '')  
+    from leaba_val import *  
+    import npu_scripts  
+    from npu_scripts import *  
+    set_dev(self.device)  
+    
+    npu_sc  
+    
+    
      /common/pkgs/python/3.6.10/bin/python3 driver/gibraltar/shared/test/api/ip_routing/test_ipv4_l3_ac_routing.py -v test_ipv4_l3_ac_routing.test_destroy_route
      
     then we will stop at the  pdb.set_trace():
