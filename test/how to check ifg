@@ -32,6 +32,83 @@ it is still up:)
 So I suspect there are some register is set to make serdis up, but I don't know
 
 
- 
+2.check if the FCM received a valid PFC packet:
+to read register FcmWdExpiredCounter0 ~ FcmWdExpiredCounter24
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[0])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[1])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[2])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[3])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[4])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[5])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[6])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[7])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[8])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[9])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[10])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[11])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[12])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[13])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[14])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[15])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[16])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[17])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[18])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[19])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[20])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[21])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[22])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[23])
+port_wd_expired [31:0] = 0x000000000
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expired_counter[24])
+*** IndexError: list index out of range
+
+
 
 
