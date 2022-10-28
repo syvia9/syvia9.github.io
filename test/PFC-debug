@@ -96,7 +96,7 @@ pfc_status [31:0] = 0x000000000
 Just add a mib counter that can  prove the ifg receives fc packet:
 Below command is to read mib counter and print the rx_mac_fc_frames_ok;
 the mib counter result is 44655, and get_counters() result is 54843, almost the same, so the packet is valid:
-
+(Pdb) mib_counters = self.mac_port.read_mib_counters(False)
 (Pdb) print(mib_counters.rx_mac_fc_frames_ok)
 44655
 
@@ -110,6 +110,12 @@ INFO  IFG_RX0 bytes            =               0    |IFG_RX2 =               0  
 INFO  IFG_RX1 bytes            =               0    |IFG_RX3 =               0    |IFG_RX5 =               0    |IFG_RX7 =               0    |IFG_RX9 =               0    |IFG_RX11 =               0    |
 INFO  IFG_RX0 flow control     =               0    |IFG_RX2 =               0    |IFG_RX4 =               0    |IFG_RX6 =               0    |IFG_RX8 =               0    |IFG_RX10 =           54843    |
 
+7. another point is: check if the src_addr of the ethernet header is filtered in the mac/ifg..
 
 
-
+(Pdb) debug_device.write_register(gibraltar_tree.slice[5].ifg[0].mac_pool8[0].tx_mac_fc_per_xoff_timer[0],0xffffff)
+(Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].mac_pool8[0].tx_mac_fc_per_xoff_timer[0])
+tx_fc_per_xoff_timer [15:0] = 0x0ffff
+tx_fc_per_xoff_en [23:16] = 0x0ff
+on affect
+debug_device.read_register(gibraltar_tree.slice[5].ifg[0].mac_pool8[0].rx_mac_cfg0[0])
