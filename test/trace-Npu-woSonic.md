@@ -28,7 +28,6 @@ sed -i 's/import debug_utils as hld_debug_utils/import leaba\.debug_tools\.debug
     import npu_scripts  
     from npu_scripts import *  
     set_dev(self.device)  
-    from leaba_val import *   
     npu_sc  
     
     
