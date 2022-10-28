@@ -122,3 +122,102 @@ yes.
 
 So here is the conclusion:
 PFC send only ncontrol flow based on link(port), not on priority.
+
+5.check tx timer settings:
+>>>debug_device.read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].tx_mac_fc_per_xoff_timer[0])
+>>>tx_fc_per_xoff_timer [15:0] = 0x0ffff
+tx_fc_per_xoff_en [23:16] = 0x020
+>>>debug_device.read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].tx_mac_fc_per_xoff_timer[1])
+>>>tx_fc_per_xoff_timer [15:0] = 0x0ffff
+tx_fc_per_xoff_en [23:16] = 0x020
+>>>debug_device.read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].tx_mac_fc_per_xoff_timer[2])
+>>>tx_fc_per_xoff_timer [15:0] = 0x0ffff
+tx_fc_per_xoff_en [23:16] = 0x020
+>>>debug_device.read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].tx_mac_fc_per_xoff_timer[3])
+>>>tx_fc_per_xoff_timer [15:0] = 0x0ffff
+tx_fc_per_xoff_en [23:16] = 0x020
+>>>debug_device.read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].tx_mac_fc_per_xoff_timer[4])
+>>>tx_fc_per_xoff_timer [15:0] = 0x0ffff
+tx_fc_per_xoff_en [23:16] = 0x0ff
+
+>>>debug_device.read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[1].tx_mac_fc_per_xoff_timer[0])
+>>>tx_fc_per_xoff_timer [15:0] = 0x0ffff
+tx_fc_per_xoff_en [23:16] = 0x0ff
+
+
+debug_device.write_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].tx_mac_fc_per_xoff_timer[0],0xffffff)
+
+6. close the periodically sending:
+debug_device.write_register(gibraltar_tree.slice[4].ifg[1].ifgb.fc_cfg0,0)
+check if the PFC packet has been stopped
+get_counters()
+YES
+
+7. send PFC packet by IXIA, 10 packets/s
+(Pdb) debug_device.read_register(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_wd_expired_counter[0])
+port_wd_expired [31:0] = 0x000000000
+
+I read it several times , the pfc_status  with index 0 is always ZERO
+(Pdb) debug_device.read_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug_cfg)
+pfc_status_select [3:0] = 0x00
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug)
+pfc_status [31:0] = 0x000000000
+
+PDOQ status is still 0 
+
+8. change the rx ternimate condition:
+debug_device.read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac_cfg0[0])
+
+>>>rx_crc_check [0:0] = 0x1
+rx_crc_oob_check [1:1] = 0x1
+rx_oob_intrlv_type_filt_en [2:2] = 0x1
+rx_oob_intrlv_inb_type_filt_en [3:3] = 0x1
+rx_cnt_ka_en [4:4] = 0x1
+rx_crc_strip [5:5] = 0x1
+rx_ctrl_pkts64b60b [6:6] = 0x0
+rx_ctrl_pkts_term [7:7] = 0x1
+rx_ctrl_pkts_term_by_address [8:8] = 0x0
+rx_fc_mode [10:9] = 0x2
+rx_link_interruption_en [11:11] = 0x1
+
+enable rx_ctrl_pkts_term_by_address:
+debug_device.write_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac_cfg0[0],0xdbf)
+>>>rx_crc_check [0:0] = 0x1ter(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac
+rx_crc_oob_check [1:1] = 0x1
+rx_oob_intrlv_type_filt_en [2:2] = 0x1
+rx_oob_intrlv_inb_type_filt_en [3:3] = 0x1
+rx_cnt_ka_en [4:4] = 0x1
+rx_crc_strip [5:5] = 0x1
+rx_ctrl_pkts64b60b [6:6] = 0x0
+rx_ctrl_pkts_term [7:7] = 0x1
+rx_ctrl_pkts_term_by_address [8:8] = 0x1
+rx_fc_mode [10:9] = 0x2
+rx_link_interruption_en [11:11] = 0x1
+
+the fcm and pdoq are still 0
+(Pdb) debug_device.read_register(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_wd_expired_counter[0])
+port_wd_expired [31:0] = 0x000000000
+
+I read it several times , the pfc_status  with index 0 is always ZERO
+(Pdb) debug_device.read_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug_cfg)
+pfc_status_select [3:0] = 0x00
+
+(Pdb) debug_device.read_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug)
+pfc_status [31:0] = 0x000000000
+
+9. read mib counters:
+too bad, the packet is not recognized as a valid PFC packet...
+mib_counters = mp0.read_mib_counters(False)
+print(mib_counters.rx_mac_fc_frames_ok)
+>>>print(mib_counters.rx_mac_fc_frames_ok)
+>>>0
+print(mib_counters.rx_mac_fc_frames_ok)
+>>>0
+print(mib_counters.rx_mac_fc_frames_ok)
+>>>0
+print(mib_counters.rx_mac_fc_frames_ok)
+>>>0
+>>> print(mib_counters.rx_mac_fc_frames_ok)
+>>>0
+
