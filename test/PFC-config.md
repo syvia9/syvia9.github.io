@@ -34,4 +34,11 @@
     ...
 }
 
+I config PFC based on the test port:
+1.	Enable PFC on the test port (slice =5, ifg=0, first serdes id=0):  set loopback, enable port on TC = 5 to periodically send PFC xoff packet with tx_fc_per_xoff_timer =9, 
+         (Pdb)  debug_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fc_cfg0)
+        periodic_int_en [23:0] = 0x0000001
 
+        (Pdb) debug_device.read_register(gibraltar_tree.slice[5].ifg[0].mac_pool8[0].tx_mac_fc_per_xoff_timer[0])
+        tx_fc_per_xoff_timer [15:0] = 0x00009
+        tx_fc_per_xoff_en [23:16] = 0x020
