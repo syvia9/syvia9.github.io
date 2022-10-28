@@ -83,3 +83,34 @@ Leaba.NotFoundException: (25, 'Leaba_Err: Entry requested not found: virtual la_
     return _sdk.la_device_get_mac_port(self, slice_id, ifg_id, serdes_id)
 Leaba.NotFoundException: (25, 'Leaba_Err: Entry requested not found: virtual la_status silicon_one::la_device_impl::get_mac_port_internal(la_slice_id_t, la_ifg_id_t, la_uint_t, silicon_one::la_mac_port*&) const:src/hld/system/la_device_impl.cpp:7148')
 
+
+2. to check how to config PFC in this environment:
+change script:
+def test_hw_pfc_oq_state(self):        
+        self.init_common()
+        self.mac_port.set_fc_mode(sdk.la_mac_port.fc_direction_e_BIDIR,
+                                  sdk.la_mac_port.fc_mode_e_PFC)
+        self.pfc_rx_counter = self.device.create_counter(8)
+        self.mac_port.set_pfc_enable((1 << TC_VALUE))
+        self.mac_port.set_pfc_quanta(100)
+        self.dd = debug_utils.debug_device(self.device)
+        self.ll_device = self.device.get_ll_device()
+        self.tree = sim_utils.get_device_tree(self.ll_device)
+        #send a PFC packet to a network port and loopback into this very port
+        import pdb
+        pdb.set_trace()
+----------->
+ mp0 = la_device.get_mac_port(4,1,0)
+ mp0.set_fc_mode(sdk.la_mac_port.fc_direction_e_BIDIR, sdk.la_mac_port.fc_mode_e_PFC)
+ 
+ check if the register is set properly:
+ >>>debug_device.read_register(gibraltar_tree.slice[4].ifg[1].ifgb.fc_cfg0)
+>>>periodic_int_en [23:0] = 0x0000000
+
+
+>>>mp0.set_pfc_enable((1 << 5))
+>>>debug_device.read_register(gibraltar_tree.slice[4].ifg[1].ifgb.fc_cfg0)
+>>>periodic_int_en [23:0] = 0x0000001
+
+It seems OK, good job!!
+3. to check 
