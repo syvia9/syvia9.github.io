@@ -240,5 +240,17 @@ fcm_prio_map_data [191:0] = 0x0fdeeff98c7af9aeddbef5ffdbfffffdb7fd72ff700000000
    debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,6)
    debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,7)
     
-    
-    
+5.3.
+    for (auto port : m_mac_pool_port) {
+        status = port->set_xoff_timer_settings(tc_bitmap, m_pfc_quanta);
+        return_on_error(status);
+
+        status = port->set_xon_timer_settings(tc_bitmap, 0 /* Xon timer value */);
+        return_on_error(status);
+    }    
+
+5.4.
+set_port_periodic_int_enable:
+m_device->m_ll_device->write_register(m_gibraltar_tree->slice[m_slice_id]->ifg[m_ifg_id]->ifgb->fc_cfg0, fc_cfg0_reg);
+
+
