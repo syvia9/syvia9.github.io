@@ -236,4 +236,950 @@ primib_counters = mp0.read_mib_counters(False)
 
 the mib counter  increased as well.
 
+12.modify the rx_mac_cfg0 to disable the FC term
+debug_device.write_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac_cfg0[0],0xc7f)
+
+c_cfg0[0],0xc7f)read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac_cfg0[0])
+>>>rx_crc_check [0:0] = 0x1ter(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac
+rx_crc_oob_check [1:1] = 0x1
+rx_oob_intrlv_type_filt_en [2:2] = 0x1
+rx_oob_intrlv_inb_type_filt_en [3:3] = 0x1
+rx_cnt_ka_en [4:4] = 0x1
+rx_crc_strip [5:5] = 0x1
+rx_ctrl_pkts64b60b [6:6] = 0x1
+rx_ctrl_pkts_term [7:7] = 0x0
+rx_ctrl_pkts_term_by_address [8:8] = 0x0
+rx_fc_mode [10:9] = 0x2
+rx_link_interruption_en [11:11] = 0x1
+
++--print(mib_counters.rx_mac_fc_frames_ok)-+-------+-----+------+-------+-----+------+-------+
+>>>24685
+
+>>>x-NPE-1 |  43write_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac_cfg0[0],0xc7f)  18 |  18  |   0   |  0  |  0   |   0   |
+>>>g0[0])device.read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac_
+>>>
+>>>mib_counters = mp0.read_mib_counters(False)
+>>>print(mib_counters.rx_mac_fc_frames_ok)
+>>>40224
+
+12.modify the rx_mac_cfg0 to enable the PFC term
+debug_device.write_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac_cfg0[0],0xd7f)
+//the above command may need written twice sometimes
+debug_device.read_register(gibraltar_tree.slice[4].ifg[1].mac_pool8[0].rx_mac_cfg0[0])
+>>>rx_crc_check [0:0] = 0x1
+rx_crc_oob_check [1:1] = 0x1
+rx_oob_intrlv_type_filt_en [2:2] = 0x1
+rx_oob_intrlv_inb_type_filt_en [3:3] = 0x1
+rx_cnt_ka_en [4:4] = 0x1
+rx_crc_strip [5:5] = 0x1
+rx_ctrl_pkts64b60b [6:6] = 0x1
+rx_ctrl_pkts_term [7:7] = 0x0
+rx_ctrl_pkts_term_by_address [8:8] = 0x0
+rx_fc_mode [10:9] = 0x2
+rx_link_interruption_en [11:11] = 0x1
+
+>>>mib_counters = mp0.read_mib_counters(False)
+>>>print(mib_counters.rx_mac_fc_frames_ok)
+>>>138492
+>>>
+>>>mib_counters = mp0.read_mib_counters(False)
+>>>print(mib_counters.rx_mac_fc_frames_ok)
+>>>140583
+
+13.check fcm config
+debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,0)
+debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,1)
+debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,2)
+debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,3)
+debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,4)
+debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,5)
+debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,6)
+debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,7)
+
+14.strongly suspect that the configuration is not complete
+self.mac_port.set_pfc_tc_xoff_rx_enable(TC_BITMAP)
+mp0.set_pfc_tc_xoff_rx_enable(1<<5)
+ 
+There are 128 rows in this memory, how to check:?????
+try to print all rows (using "for") before/after set_pfc_tc_xoff_rx_enable
+ 
+ after set :
+>>>for i in range(128):
+>>>...    debug_device.read_memory(gibraltar_tree.slice[4].pdoq.top.pfc_mapping,i)
+>>>...
+>>>pfc_oq_number [35:0] = 0x0018080200
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0038180a04
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0058281208
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0078381a0c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0098482210
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x00b8582a14
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x00d8683218
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x00f8783a1c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0118884220
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0138984a24
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0158a85228
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0178b85a2c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0198c86230
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x01b8d86a34
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x01d8e87238
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x01f8f87a3c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0219088240
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0239188a44
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0259289248
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0279389a4c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x029948a250
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x02b958aa54
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x02d968b258
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x02f978ba5c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x031988c260
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x033998ca64
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0359a8d268
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0379b8da6c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0399c8e270
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x03b9d8ea74
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x03d9e8f278
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x03f9f8fa7c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x041a090280
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x043a190a84
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x045a291288
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x047a391a8c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x049a492290
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x04ba592a94
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x04da693298
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x04fa793a9c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x051a8942a0
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x053a994aa4
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x055aa952a8
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x057ab95aac
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x059ac962b0
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x05bad96ab4
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x05dae972b8
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x05faf97abc
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x061b0982c0
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x063b198ac4
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x065b2992c8
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x067b399acc
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x069b49a2d0
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x06bb59aad4
+pfc_tc_map [67:36] = 0x000000100
+
+pfc_oq_number [35:0] = 0x06db69b2d8
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x06fb79badc
+pfc_tc_map [67:36] = 0x000000100
+
+pfc_oq_number [35:0] = 0x071b89c2e0
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x073b99cae4
+pfc_tc_map [67:36] = 0x000000100
+
+pfc_oq_number [35:0] = 0x075ba9d2e8
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x077bb9daec
+pfc_tc_map [67:36] = 0x000000100
+
+pfc_oq_number [35:0] = 0x079bc9e2f0
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x07bbd9eaf4
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x07dbe9f2f8
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x07fbf9fafc
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x081c0a0300
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x083c1a0b04
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x085c2a1308
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x087c3a1b0c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x089c4a2310
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x08bc5a2b14
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x08dc6a3318
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x08fc7a3b1c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x091c8a4320
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x093c9a4b24
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x095caa5328
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x097cba5b2c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x099cca6330
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x09bcda6b34
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x09dcea7338
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x09fcfa7b3c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a1d0a8340
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a3d1a8b44
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a5d2a9348
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a7d3a9b4c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a9d4aa350
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0abd5aab54
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0add6ab358
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0afd7abb5c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b1d8ac360
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b3d9acb64
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b5daad368
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b7dbadb6c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b9dcae370
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0bbddaeb74
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0bddeaf378
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0bfdfafb7c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c1e0b0380
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c3e1b0b84
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c5e2b1388
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c7e3b1b8c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c9e4b2390
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0cbe5b2b94
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0cde6b3398
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0cfe7b3b9c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+before set:
+>>>mp0.set_pfc_tc_xoff_rx_enable(0)
+>>>for i in range(128):
+>>>   debug_device.read_memory(gibraltar_tree.slice[4].pdoq.top.pfc_mapping,i)
+>>>...
+>>>pfc_oq_number [35:0] = 0x0018080200
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0038180a04
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0058281208
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0078381a0c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0098482210
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x00b8582a14
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x00d8683218
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x00f8783a1c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0118884220
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0138984a24
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0158a85228
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0178b85a2c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0198c86230
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x01b8d86a34
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x01d8e87238
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x01f8f87a3c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0219088240
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0239188a44
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0259289248
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0279389a4c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x029948a250
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x02b958aa54
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x02d968b258
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x02f978ba5c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x031988c260
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x033998ca64
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0359a8d268
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0379b8da6c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0399c8e270
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x03b9d8ea74
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x03d9e8f278
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x03f9f8fa7c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x041a090280
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x043a190a84
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x045a291288
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x047a391a8c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x049a492290
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x04ba592a94
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x04da693298
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x04fa793a9c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x051a8942a0
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x053a994aa4
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x055aa952a8
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x057ab95aac
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x059ac962b0
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x05bad96ab4
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x05dae972b8
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x05faf97abc
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x061b0982c0
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x063b198ac4
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x065b2992c8
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x067b399acc
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x069b49a2d0
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x06bb59aad4
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x06db69b2d8
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x06fb79badc
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x071b89c2e0
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x073b99cae4
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x075ba9d2e8
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x077bb9daec
+pfc_tc_map [67:36] = 0x000000000
+
+pfc_oq_number [35:0] = 0x079bc9e2f0
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x07bbd9eaf4
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x07dbe9f2f8
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x07fbf9fafc
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x081c0a0300
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x083c1a0b04
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x085c2a1308
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x087c3a1b0c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x089c4a2310
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x08bc5a2b14
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x08dc6a3318
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x08fc7a3b1c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x091c8a4320
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x093c9a4b24
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x095caa5328
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x097cba5b2c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x099cca6330
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x09bcda6b34
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x09dcea7338
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x09fcfa7b3c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a1d0a8340
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a3d1a8b44
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a5d2a9348
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a7d3a9b4c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0a9d4aa350
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0abd5aab54
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0add6ab358
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0afd7abb5c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b1d8ac360
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b3d9acb64
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b5daad368
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b7dbadb6c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0b9dcae370
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0bbddaeb74
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0bddeaf378
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0bfdfafb7c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c1e0b0380
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c3e1b0b84
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c5e2b1388
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c7e3b1b8c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0c9e4b2390
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0cbe5b2b94
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0cde6b3398
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0cfe7b3b9c
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+pfc_oq_number [35:0] = 0x0000000000
+pfc_tc_map [67:36] = 0x001010101
+
+we can compare where has changed:
+line 196~204
+
+   for i in range(24):
+ed_counter[i])_device.read_register(gibraltar_tree.slice[5].ifg[0].ifgb.fcm_wd_expire
+>>>...
+>>>port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+port_wd_expired [31:0] = 0x000000000
+
+
+>>>
+>>>
+>>>for i in range(16):
+g,i)...    debug_device.write_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug_cfg
+>>>     de... bug_device.read_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug)
+>>>  File "<stdin>", line 3
+    debug_device.read_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug)
+                                                                         ^
+TabError: inconsistent use of tabs and spaces in indentation
+   for i in range(16):
+i)>...   debug_device.write_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug_cfg,i
+>>>...   debug_device.read_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug)
+>>>...
+>>>pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+pfc_status [31:0] = 0x000000000
+
+
+
 
