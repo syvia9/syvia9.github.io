@@ -221,3 +221,19 @@ print(mib_counters.rx_mac_fc_frames_ok)
 >>> print(mib_counters.rx_mac_fc_frames_ok)
 >>>0
 
+10. recover the rx_mac_cfg0
+the mib counter  increased:
+getmib_counters = mp0.read_mib_counters(False)
+>>>print(mib_counters.rx_mac_fc_frames_ok)
+>>>9228
+primib_counters = mp0.read_mib_counters(False)
+>>>print(mib_counters.rx_mac_fc_frames_ok)
+>>>13109
+
+
+11.modify the PFC packet ethernet header src-address to the same as that of packets sent from chip
+000000000001
+
+the mib counter  increased as well.
+
+
