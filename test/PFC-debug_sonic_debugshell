@@ -298,7 +298,21 @@ debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,7)
 
 or
 for i in range(8):debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,i)
+fcm_prio_map_data [191:0] = 0x0efefbfcffffbdefcffd79f7b7fb6f4fcdfdaef1f00000000
 
+fcm_prio_map_data [191:0] = 0x0ddc6bcff97dbdc37df7efef7efefffdff76f7b7300000000
+
+fcm_prio_map_data [191:0] = 0x0ffdff3ffff5fe1bff7b72ef7bf5ff79e77fffbe700000000
+
+fcm_prio_map_data [191:0] = 0x0dffdffff876b7f3e3bffdcfdcbb7f7bfbafdecfb00000000
+
+fcm_prio_map_data [191:0] = 0x0bfffe8ff5f7f5dbfd5fbd75df3ffffefecef7faf00000000
+
+fcm_prio_map_data [191:0] = 0x0eff9f9ff3efffff75ff7bfd7dede7ffc5fbfb3fc20202020
+
+fcm_prio_map_data [191:0] = 0x07f1fefed9df3fb7fd9bbe4733eef18bdf5c8ffdd00000000
+
+fcm_prio_map_data [191:0] = 0x0fdeeff98c7af9aeddbef5ffdbfffffdb7fd72ff700000000
 
 14.strongly suspect that the configuration is not complete
 self.mac_port.set_pfc_tc_xoff_rx_enable(TC_BITMAP)
