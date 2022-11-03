@@ -296,6 +296,10 @@ debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,5)
 debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,6)
 debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,7)
 
+or
+for i in range(8):debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,i)
+
+
 14.strongly suspect that the configuration is not complete
 self.mac_port.set_pfc_tc_xoff_rx_enable(TC_BITMAP)
 mp0.set_pfc_tc_xoff_rx_enable(1<<5)
@@ -1193,3 +1197,57 @@ p_xoff_th [65:55] = 0x0d5
  I found the error:
   the packet timer 5 should be 0xffff, but I made a mistake : timer 0 =0xffff :((((((((
   
+17.
+From Tamir:
+I think I see the issue.
+it is fcm_prio_map. Current config looks like junk.
+try that:
+        for slice in range(6):
+            for ifg in range(2):
+                for entry in range(8):
+                    val = 1 << entry
+                    data = 0
+                    for i in range(24):
+                        data = set_bits(data, i * 8 + 7, i * 8, val)
+                    ll_device.write_memory(gibraltar_tree.slice[slice].ifg[ifg].ifgb.fcm_prio_map, entry, data)
+>>>for i in range(8):debug_device.read_memory(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_prio_map,i)
+>>>...
+>>>fcm_prio_map_data [191:0] = 0x0010101010101010101010101010101010101010101010101
+
+fcm_prio_map_data [191:0] = 0x0020202020202020202020202020202020202020202020202
+
+fcm_prio_map_data [191:0] = 0x0040404040404040404040404040404040404040404040404
+
+fcm_prio_map_data [191:0] = 0x0080808080808080808080808080808080808080808080808
+
+fcm_prio_map_data [191:0] = 0x0101010101010101010101010101010101010101010101010
+
+fcm_prio_map_data [191:0] = 0x0202020202020202020202020202020202020202020202020
+
+fcm_prio_map_data [191:0] = 0x0404040404040404040404040404040404040404040404040
+
+fcm_prio_map_data [191:0] = 0x0808080808080808080808080808080808080808080808080
+
+
+check result:
+>>>debug_device.read_register(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_wd_expired_counter[0])
+>>>port_wd_expired [31:0] = 0x0000e58d5
+
+debug_device.read_register(gibraltar_tree.slice[4].ifg[1].ifgb.fcm_wd_expired_counter[0])
+>>>port_wd_expired [31:0] = 0x0000060bd
+
+def check_oq():
+    for ii in range(1000):
+        for oqi in range(16):
+            data = debug_device.read_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug_cfg)
+            data.pfc_status_select = oqi
+            debug_device.write_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug_cfg, data)
+            result = debug_device.read_register(gibraltar_tree.slice[4].pdoq.top.pfc_debug)
+            if result.flat>0:
+               print('ii=%d: oqi=%d result.flat=%d' % (ii,oqi,result.flat))
+               
+               
+
+
+
+
