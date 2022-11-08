@@ -5,7 +5,7 @@ env BUILD_TYPE=opt3-debug scripts/release_candidate.sh -c GB -d 10.56.19.115 -V 
 
 
 
-env BUILD_TYPE=opt3-debug scripts/release_candidate.sh -c GB -d 10.56.19.115 -V /caelab/users/yaliuliu/valid/validation-gibraltar-1.54.0.ph2ea4.3 -s /caelab/user/yaliuliu/sdkmas -p "-k "test_sa_pfc__uc_bridge_p2p_packet_sweep" --json=./setup/regression_jsons/gibraltar_blacktip_all_100G_in_12_0_1_new_version.json --loopback_mode SERDES -m uc_single1 --port_flow_control_mode "PFC" --pdb --debug_mode_before_traffic -sv" -f ./tests/non_default/tm_tests/pfc_snake_test.py
+env BUILD_TYPE=opt3-debug scripts/release_candidate.sh -c GB -d 10.56.19.115 -V /caelab/users/yaliuliu/valid/validation-gibraltar-1.54.0.ph2ea4.3 -s /caelab/users/yaliuliu/sdkmas -p "-k "test_sa_pfc__uc_bridge_p2p_packet_sweep" --json=./setup/regression_jsons/gibraltar_blacktip_all_100G_in_12_0_1_new_version.json --loopback_mode SERDES -m uc_single1 --port_flow_control_mode "PFC" --pdb --debug_mode_before_traffic -sv" -f ./tests/non_default/tm_tests/pfc_snake_test.py
 
 --------------------------log-------------------------------------------------
 
