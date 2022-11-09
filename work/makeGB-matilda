@@ -1,0 +1,2 @@
+make SDK_DEVICE_NAME="/dev/uio0" MATILDA_TEST_MODE="3.2B" MATILDA_MAP_F="shared/manufacturing/matilda_32B_slices_mappings_slice_pair.json" test-api-test VERBOSE=1 ENABLE_SERIALIZATION=0 OPT=3
+remove SDK_DEVICE_NAME="/dev/uio0" if nsim
