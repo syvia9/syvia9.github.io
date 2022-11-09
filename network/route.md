@@ -63,45 +63,4 @@ M：由路由的后台程序修改；
 最后查询Mac表，是为了确定报文的发送接口，确定了出接口，内核会将报文发送到对应的网卡驱动上，网卡在合适的时间会将报文发送到下一跳设备上。
 
 
-# How to change 8201.json to enable per_event_counter for debug : get_counters() under debug shell
-1.Xiaochen Fan 9/22/2022 5:15 PM • 
-Steven Xi Chen
 
-Xiaochen 测ACL资源用这个bin
-/var/www/html/steven-1.54.0.ph2ea4.8-port_prot_cnt-09012022.bin
-注意，8201.json里面加上
-"per_event_counters" : true
-
-Yang
-
-
-Xiaochen Fan 9/22/2022 5:19 PM • 
-{
-    "board-type": "churchill_p3",
-    "description": "Slot 0 (PHY 0), Asic 0 (churchill_p3 [0:39]) on chassis churchill",
-    "board-rev": "0",
-    "devices": [
-         {
-           "id": 0,
-           "type": "gibraltar",
-           "rev": 1,
-	   "device_property": {
-		   "enable_service_counters": true,
-
-
-         "voq_prefetch_size": 4,
-"flow_cache_enable": true,
-"flow_cache_activity_aging_time_in_ns": 200000,
-"flow_cache_coherency_aging_time_in_ns": 35000000,
-
-		   "device_frequency": 1350000,
-		   "per_event_counters" : true
-
-           },
-	   "traps_config": "/opt/cisco/silicon-one/res/config/traps_config.json",
-
-           "push_port_qos_to_switch": true,
-           "ifg_swap_lists": [
-                  {"slice":0,"ifg":0,
-                   "swap":[1, 0, 3, 2, 4, 5, 6, 7, 11, 9, 10, 8, 13, 15, 14, 12, 17, 16, 18, 19, 21, 22, 23, 20],
-……
