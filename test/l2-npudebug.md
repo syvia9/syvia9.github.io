@@ -1,105 +1,59 @@
-
-    npu_sc.print_npe_counters_table()
-    ^
-IndentationError: unexpected indent
-
->>>npu_sc.print_npe_counters_table()
->>>+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+---
-|          |s0-in|s0-out|s0-loop|s1-in|s1-out|s1-loop|s2-in|s2-out|s2-loop|s3-in|s3-out|s3-loop|s4-in|s4-out|s4-loop|s5-in|s5-out
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| NPU-Host |  4  |  4   |   0   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-0|  55 |  55  |   8   |  5  |  5   |   8   |  2  |  2   |   4   | 542 | 542  |   4   | 9347| 9347 |  8812 |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-1|  52 |  52  |   4   |  4  |  4   |   4   |  1  |  1   |   2   | 541 | 541  |   2   | 9346| 9346 |  8810 |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-2|  52 |  52  |   4   |  3  |  3   |   4   |  1  |  1   |   2   | 540 | 540  |   2   | 9346| 9346 |  8810 |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-0 |  55 |  55  |   4   |  5  |  5   |   4   |  2  |  2   |   2   | 542 | 542  |   2   | 9348| 9348 |  8811 |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-1 |  52 |  52  |   2   |  4  |  4   |   2   |  1  |  1   |   1   | 541 | 541  |   1   | 9346| 9346 |  8808 |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-2 |  52 |  52  |   2   |  3  |  3   |   2   |  1  |  1   |   1   | 540 | 540  |   1   | 9346| 9346 |  8803 |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| Tx-NPE-0 |  16 |  16  |   0   |  2  |  2   |   0   |  0  |  0   |   0   | 810 | 810  |   0   |14834|14834 |  1602 |  3  |  3
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| Tx-NPE-1 |  16 |  16  |   0   |  2  |  2   |   0   |  0  |  0   |   0   | 809 | 809  |   0   |14833|14833 |  1620 |  3  |  3
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
->>> npu_sc.print_npe_counters_table()
->>>+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+---
-|          |s0-in|s0-out|s0-loop|s1-in|s1-out|s1-loop|s2-in|s2-out|s2-loop|s3-in|s3-out|s3-loop|s4-in|s4-out|s4-loop|s5-in|s5-out
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| NPU-Host |  0  |  0   |   0   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-0|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  45 |  45  |   45  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-1|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  45 |  45  |   45  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
+**>>> npu_sc.print_npe_counters_table()**  
+```
+>>>+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+---  
+|          |s0-in|s0-out|s0-loop|s1-in|s1-out|s1-loop|s2-in|s2-out|s2-loop|s3-in|s3-out|s3-loop|s4-in|s4-out|s4-loop|s5-in|s5-out  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+| NPU-Host |  0  |  0   |   0   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Term-NPE-0|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  45 |  45  |   45  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Term-NPE-1|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  45 |  45  |   45  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
 |Term-NPE-2|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  45 |  45  |   45  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  44 |  44  |   44  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  45 |  45  |   45  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-2 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  45 |  45  |   45  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| Tx-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  67 |  67  |   0   |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| Tx-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  67 |  67  |   0   |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
->>> npu_sc.print_npe_counters_table()
->>>+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+---
-|          |s0-in|s0-out|s0-loop|s1-in|s1-out|s1-loop|s2-in|s2-out|s2-loop|s3-in|s3-out|s3-loop|s4-in|s4-out|s4-loop|s5-in|s5-out
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| NPU-Host |  0  |  0   |   0   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-0|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-1|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-2|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-2 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| Tx-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 300 | 300  |   0   |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| Tx-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 300 | 300  |   0   |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
->>> npu_sc.print_npe_counters_table()
->>>+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+---
-|          |s0-in|s0-out|s0-loop|s1-in|s1-out|s1-loop|s2-in|s2-out|s2-loop|s3-in|s3-out|s3-loop|s4-in|s4-out|s4-loop|s5-in|s5-out
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| NPU-Host |  0  |  0   |   0   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-0|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  58 |  58  |   58  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-1|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  58 |  58  |   58  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-2|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  58 |  58  |   58  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  58 |  58  |   58  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  58 |  58  |   58  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-2 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  58 |  58  |   58  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| Tx-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  87 |  87  |   0   |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| Tx-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  88 |  88  |   0   |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Fwd-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  44 |  44  |   44  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Fwd-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  45 |  45  |   45  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Fwd-NPE-2 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  45 |  45  |   45  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+| Tx-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  67 |  67  |   0   |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+| Tx-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  67 |  67  |   0   |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+```
+**>>> npu_sc.print_npe_counters_table()**  
+>>>
+|          |s0-in|s0-out|s0-loop|s1-in|s1-out|s1-loop|s2-in|s2-out|s2-loop|s3-in|s3-out|s3-loop|s4-in|s4-out|s4-loop|s5-in|s5-out  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+| NPU-Host |  0  |  0   |   0   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Term-NPE-0|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Term-NPE-1|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Term-NPE-2|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Fwd-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Fwd-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+|Fwd-NPE-2 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 200 | 200  |  200  |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+| Tx-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 300 | 300  |   0   |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+| Tx-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 300 | 300  |   0   |  0  |  0  
++----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------  
+
 >>> slice = 4
 >>>stage = "termination"
-age, npe_index=0, print_note=True)enable=True, step=False, slice=slice, stage=sta
+>>>npu_sc.npe_stop_and_step_macro(enable=False, step=False, slice=slice, stage=stage, npe_index=0, print_note=True)
 >>>0
 Slice[4].Stage['termination'].NPE[0] -> Enable Stop macro feature
 
 age, npe_index=0, print_note=True)enable=True, step=False, slice=slice, stage=sta
 >>>1
->>>npu_sc.print_npe_counters_table()
+**>>>npu_sc.print_npe_counters_table()**  
 >>>+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+---
 |          |s0-in|s0-out|s0-loop|s1-in|s1-out|s1-loop|s2-in|s2-out|s2-loop|s3-in|s3-out|s3-loop|s4-in|s4-out|s4-loop|s5-in|s5-out
 +----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
@@ -121,7 +75,7 @@ age, npe_index=0, print_note=True)enable=True, step=False, slice=slice, stage=st
 +----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
 | Tx-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 1997| 1997 |   0   |  0  |  0
 +----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
->>> npu_sc.print_npe_counters_table()
+**>>> npu_sc.print_npe_counters_table()**  
 >>>+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+---
 |          |s0-in|s0-out|s0-loop|s1-in|s1-out|s1-loop|s2-in|s2-out|s2-loop|s3-in|s3-out|s3-loop|s4-in|s4-out|s4-loop|s5-in|s5-out
 +----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
@@ -143,62 +97,61 @@ age, npe_index=0, print_note=True)enable=True, step=False, slice=slice, stage=st
 +----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
 | Tx-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  53 |  53  |   0   |  0  |  0
 +----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
->>> npu_sc.print_npe_counters_table()
->>>+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+---
-|          |s0-in|s0-out|s0-loop|s1-in|s1-out|s1-loop|s2-in|s2-out|s2-loop|s3-in|s3-out|s3-loop|s4-in|s4-out|s4-loop|s5-in|s5-out
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| NPU-Host |  0  |  0   |   0   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -   |   -   |  -  |  -
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-0|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-1|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  62 |  62  |   62  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Term-NPE-2|  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  62 |  62  |   62  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  42 |  42  |   42  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-1 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  41 |  41  |   41  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-|Fwd-NPE-2 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  41 |  41  |   41  |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
-| Tx-NPE-0 |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   |  0  |  0   |   0   | 280 | 280  |   0   |  0  |  0
-+----------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------+-------+-----+------
->>>npu_sc.rxpp_term_last_npe_macros(4,0)
+
+**>>>npu_sc.rxpp_term_last_npe_macros(4,0)**  
 >>>#### NOTES: 1) Max stack depth is 4. Head of the macros stack is entry=0. 2) This register is cleared once read. Since last re
   NPE-macros-stack[entry=0]: macro_id 0x5, i.e. 'network_rx_mac_af_and_termination_macro'
   NPE-macros-stack[entry=1]: macro_id 0x5, i.e. 'network_rx_mac_af_and_termination_macro'
   NPE-macros-stack[entry=2]: macro_id 0x5, i.e. 'network_rx_mac_af_and_termination_macro'
   NPE-macros-stack[entry=3]: macro_id 0x5, i.e. 'network_rx_mac_af_and_termination_macro'
->>> npu_sc.rxpp_term_last_npe_macros(4,0)
+**>>> npu_sc.rxpp_term_last_npe_macros(4,0)**  
 >>>#### NOTES: 1) Max stack depth is 4. Head of the macros stack is entry=0. 2) This register is cleared once read. Since last re
   NPE-macros-stack is empty/cleared
-ge, npe_index=0, print_note=True)able=True, step=True, slice=slice, stage=stag
+**>>>npu_sc.npe_stop_and_step_macro(enable=True, step=True, slice=slice, stage=stage, npe_index=0, print_note=True)**  
 >>>1
 Slice[4].Stage['termination'].NPE[0] -> Stepping single macro
 
-ge, npe_index=0, print_note=True)(enable=True, step=True, slice=slice, stage=stag
+**>>>npu_sc.npe_stop_and_step_macro(enable=True, step=True, slice=slice, stage=stage, npe_index=0, print_note=True)**  
+```
 >>>1
 Slice[4].Stage['termination'].NPE[0] -> Stepping single macro
 
->>>npu_sc.rxpp_term_last_npe_macros(4,0)
->>>#### NOTES: 1) Max stack depth is 4. Head of the macros stack is entry=0. 2) This register is cleared once read. Since last re
-  NPE-macros-stack[entry=0]: macro_id 0x5, i.e. 'network_rx_mac_af_and_termination_macro'
-  NPE-macros-stack[entry=1]: macro_id 0x6, i.e. 'network_rx_mac_qos_macro'
-  NPE-macros-stack[entry=2]: macro_id 0x5, i.e. 'network_rx_mac_af_and_termination_macro'
-  NPE-macros-stack[entry=3]: macro_id 0x6, i.e. 'network_rx_mac_qos_macro'
-print_note=True)ookups_and_results(stage="termination", slice=4,npe_index=0,
->>>|-----------------------------------------------------------------------------------------------------------------------------
-| Key Bucket |                  Key Type                  |      Key Value      | Result Bucket |                 Result Type
-|================================================================================================================================
-|     a      | npl_service_mapping_compound_table_key_opt | 0x1040000019000253c |       d       | npl_l2_relay_and_l3_lp_attribut
-|            | ion_service_mapping_selector_ac_port_tag_t |                     |               |
-|--------------------------------------------------------------------------------------------------------------------------------
-|     a      | npl_service_mapping_compound_table_key_opt | 0x1040000019000253c |       a       |           npl_mac_lp_attributes
-|            | ion_service_mapping_selector_ac_port_tag_t |                     |               |
-|--------------------------------------------------------------------------------------------------------------------------------
-|     a      | npl_service_mapping_compound_table_key_opt | 0x1040000019000253c |       b       |         npl_base_l3_lp_attr_uni
-|            | ion_service_mapping_selector_ac_port_tag_t |                     |               |
-|--------------------------------------------------------------------------------------------------------------------------------
+**>>>npu_sc.get_npe_lookups_and_results(stage="termination", slice=4, npe_index=0, print_note=True)**  
+>>>|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Key Bucket |                  Key Type                  |      Key Value      | Result Bucket |                 Result Type                 |                Result Value                |
+|==========================================================================================================================================================================================|
+|     a      | npl_service_mapping_compound_table_key_opt | 0x1040000019000253c |       d       | npl_l2_relay_and_l3_lp_attributes_payload_t |                0xe100001000                |
+|            | ion_service_mapping_selector_ac_port_tag_t |                     |               |                                             |                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     a      | npl_service_mapping_compound_table_key_opt | 0x1040000019000253c |       a       |           npl_mac_lp_attributes_t           | 0x2000000000800007efff08000d682bc7ffff0000 |
+|            | ion_service_mapping_selector_ac_port_tag_t |                     |               |                                             |                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     a      | npl_service_mapping_compound_table_key_opt | 0x1040000019000253c |       b       |         npl_base_l3_lp_attr_union_t         |                    0x0                     |
+|            | ion_service_mapping_selector_ac_port_tag_t |                     |               |                                             |                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+For elaboration of keys/results:
+     npu_sc.print_parsed_npe_key(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)
+     npu_sc.print_parsed_npe_result(<stage>, <slice>, <npe index>, <bucket a/b/c/d>)
+Examples:
+     npu_sc.print_parsed_npe_key("termination", 4, 0, "a")
+     npu_sc.print_parsed_npe_result("termination", 4, 0, "d")
+```
+**>>>npu_sc.print_parsed_npe_key("termination", 4, 0, "a")**  
+>>>Key type: npl_service_mapping_compound_table_key_option_service_mapping_selector_ac_port_tag_t, Value: 0x1040000019000253c
+  const1_4b1100_exact_0xc: 0xc
+  const2_18d0_exact_0x0: 0x0
+  mac_af_local_vars_mac_termination_logical_db: 0x0
+  parsing mac_af_local_vars_outer_vlan_tag_vid:
+    id: 0x64
+  mac_af_local_vars_service_mapping_logical_db: 0x4
+  parsing mac_relay_local_vars_mac_da_compound_termination_control:
+    append_relay: 0x1
+    attempt_termination: 0x1
+  mac_relay_local_vars_mac_da_prefix: 0x1
+  packet_ethernet_header_da_32_0_: 0x2
+  parsing pd_layer_vars_local_slp_id:
+    id: 0x9
+
 
 
 
@@ -387,13 +340,91 @@ subject you to criminal prosecution and penalties.
 
 Type the hot key to suspend the connection: <CTRL>Z
 
->>>
->>>for k,v in t2.entries(0):
->>>...   key = k
->>>...   val = v
-",val.payloads.write.relay_id.id)yloads.write.lp_id.id, "value.payloads.relay_id"tio
->>>...
->>>key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+t0 = tables.service_mapping_em0_ac_port_table[0]
+for index in range(t0.size()):
+    print('index', index)
+    for k,v in t0.entries(index):
+        key = k
+        val = v
+        print("key.local_slp_id.id", key.local_slp_id.id, "value.action", val.action, "value.payloads.lp_id", val.payloads.write.lp_id.id, "value.payloads.relay_id",val.payloads.write.relay_id.id)
+   
+>>>key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 29 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 30 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 31 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 32 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 34 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+key.local_slp_id.id 35 value.action 0 value.payloads.lp_id 19 value.payloads.relay_id 0
+key.local_slp_id.id 36 value.action 0 value.payloads.lp_id 21 value.payloads.relay_id 0
+key.local_slp_id.id 37 value.action 0 value.payloads.lp_id 23 value.payloads.relay_id 0
+key.local_slp_id.id 38 value.action 0 value.payloads.lp_id 25 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 29 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 29 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 30 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 29 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 30 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 31 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 29 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 30 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 31 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 32 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 29 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 30 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 31 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 32 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 34 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 29 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 30 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 31 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 32 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 34 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+key.local_slp_id.id 35 value.action 0 value.payloads.lp_id 19 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 29 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 30 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 31 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 32 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 34 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+key.local_slp_id.id 35 value.action 0 value.payloads.lp_id 19 value.payloads.relay_id 0
+key.local_slp_id.id 36 value.action 0 value.payloads.lp_id 21 value.payloads.relay_id 0
+key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 28 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 29 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 30 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 31 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 32 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 34 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+key.local_slp_id.id 35 value.action 0 value.payloads.lp_id 19 value.payloads.relay_id 0
+key.local_slp_id.id 36 value.action 0 value.payloads.lp_id 21 value.payloads.relay_id 0
+key.local_slp_id.id 37 value.action 0 value.payloads.lp_id 23 value.payloads.relay_id 0
+
+for k,v in t0.entries(1):
+   key = k
+   val = v
+   print("key.local_slp_id.id", key.local_slp_id.id, "value.action", val.action, "value.payloads.lp_id", val.payloads.write.lp_id.id, "value.payloads.relay_id",val.payloads.write.relay_id.id)
+
+>>>key.local_slp_id.id 27 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+   
+
+>>>index 0
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
 key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
 key.local_slp_id.id 19 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
 key.local_slp_id.id 20 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
@@ -404,4 +435,161 @@ key.local_slp_id.id 24 value.action 0 value.payloads.lp_id 15 value.payloads.rel
 key.local_slp_id.id 25 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
 key.local_slp_id.id 26 value.action 0 value.payloads.lp_id 19 value.payloads.relay_id 0
 key.local_slp_id.id 33 value.action 0 value.payloads.lp_id 21 value.payloads.relay_id 0
+index 1
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+index 2
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+index 3
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 19 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+index 4
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 19 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 20 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+index 5
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 19 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 20 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 21 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+index 6
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 19 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 20 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 21 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 22 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+index 7
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 19 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 20 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 21 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 22 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 23 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+index 8
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 19 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 20 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 21 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 22 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 23 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 24 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+index 9
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 19 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 20 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 21 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 22 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 23 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 24 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 25 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+index 10
+key.local_slp_id.id 6 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 128
+key.local_slp_id.id 11 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 19 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 20 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 21 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 22 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 23 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 24 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 25 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+key.local_slp_id.id 26 value.action 0 value.payloads.lp_id 19 value.payloads.relay_id 0
 
+
+
+>>>t0 = tables.service_mapping_em0_ac_port_table[2]
+>>>for index in range(t0.size()):
+>>>    print('index', index)
+>>>    for k,v in t0.entries(index):
+>>>        key = k
+>>>        val = v
+>>>        print("key.local_slp_id.id", key.local_slp_id.id, "value.action", val.action, "value.payloads.lp_id", val.payloads.write.lp_id.id, "value.payloads.relay_id",val.payloads.write.relay_id.id)... ... ... ... ...
+>>>...
+>>>index 0
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 9 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 10 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 12 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 13 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 14 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 15 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 16 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+key.local_slp_id.id 17 value.action 0 value.payloads.lp_id 19 value.payloads.relay_id 0
+key.local_slp_id.id 18 value.action 0 value.payloads.lp_id 21 value.payloads.relay_id 0
+index 1
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+index 2
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+index 3
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 9 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+index 4
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 9 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 10 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+index 5
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 9 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 10 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 12 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+index 6
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 9 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 10 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 12 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 13 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+index 7
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 9 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 10 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 12 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 13 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 14 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+index 8
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 9 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 10 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 12 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 13 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 14 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 15 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+index 9
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 9 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 10 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 12 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 13 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 14 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 15 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 16 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+index 10
+key.local_slp_id.id 7 value.action 0 value.payloads.lp_id 1 value.payloads.relay_id 0
+key.local_slp_id.id 8 value.action 0 value.payloads.lp_id 3 value.payloads.relay_id 0
+key.local_slp_id.id 9 value.action 0 value.payloads.lp_id 5 value.payloads.relay_id 0
+key.local_slp_id.id 10 value.action 0 value.payloads.lp_id 7 value.payloads.relay_id 0
+key.local_slp_id.id 12 value.action 0 value.payloads.lp_id 9 value.payloads.relay_id 0
+key.local_slp_id.id 13 value.action 0 value.payloads.lp_id 11 value.payloads.relay_id 0
+key.local_slp_id.id 14 value.action 0 value.payloads.lp_id 13 value.payloads.relay_id 0
+key.local_slp_id.id 15 value.action 0 value.payloads.lp_id 15 value.payloads.relay_id 0
+key.local_slp_id.id 16 value.action 0 value.payloads.lp_id 17 value.payloads.relay_id 0
+key.local_slp_id.id 17 value.action 0 value.payloads.lp_id 19 value.payloads.relay_id 0
+     
+   
+   
+   
+   
