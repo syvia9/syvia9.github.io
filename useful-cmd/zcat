@@ -1,6 +1,0 @@
- sudo zcat /var/log/syslog.*.gz | grep "action=DELETE,prefix=17.0.0.2"
-
-sudo zcat /var/log/syslog.*.gz | grep "after set"
-sudo zcat /var/log/syslog.*.gz | grep "used slices"
-
-
